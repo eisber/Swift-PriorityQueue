@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
-  s.name = 'Swift-PriorityQueue'
-  s.version = '0.1'
+  s.name = 'PriorityQueue'
+  s.version = '0.2'
   s.license = 'MIT'
   s.summary = 'Priority Queue in Swift'
   s.homepage = 'https://github.com/jdauphant/Swift-PriorityQueue'
