@@ -13,7 +13,7 @@ import XCTest
 
 class PriorityQueueTests: XCTestCase {
     func testSimple() {
-        var queue = PriorityQueue<Int>(<)
+        let queue = PriorityQueue<Int>(<)
         queue.push(10)
         queue.push(2)
         queue.push(3)
@@ -39,7 +39,7 @@ class PriorityQueueTests: XCTestCase {
     }
 
     func testRandom() {
-        var queue = PriorityQueue<UInt32>(<)
+        let queue = PriorityQueue<UInt32>(<)
         for var i = 0; i < 10000; i += 1 {
             queue.push(arc4random())
         }
@@ -51,7 +51,7 @@ class PriorityQueueTests: XCTestCase {
     }
 
     func testUpdate() {
-        var queue = PriorityQueue<Item>({ $0.priority < $1.priority })
+        let queue = PriorityQueue<Item>({ $0.priority < $1.priority })
         let items = [
             Item(priority: 1),
             Item(priority: 2),
@@ -70,7 +70,7 @@ class PriorityQueueTests: XCTestCase {
     }
 
     func testRemove() {
-        var queue = PriorityQueue<Int>(<)
+        let queue = PriorityQueue<Int>(<)
         (1...7).map { queue.push($0) }
         XCTAssertTrue(queue.remove(3) == 3)
         XCTAssertEqual(Array(queue), [1,2,4,5,6,7])
@@ -78,7 +78,7 @@ class PriorityQueueTests: XCTestCase {
 
     func testPushPerformance() {
         measureMetrics(self.dynamicType.defaultPerformanceMetrics(), automaticallyStartMeasuring:false) {
-            var queue = PriorityQueue<UInt32>(<)
+            let queue = PriorityQueue<UInt32>(<)
             self.startMeasuring()
             for var i = 0; i < 10000; i += 1 {
                 queue.push(arc4random())
@@ -89,13 +89,13 @@ class PriorityQueueTests: XCTestCase {
 
     func testPopPerformance() {
         measureMetrics(self.dynamicType.defaultPerformanceMetrics(), automaticallyStartMeasuring:false) {
-            var queue = PriorityQueue<UInt32>(<)
+            let queue = PriorityQueue<UInt32>(<)
             for var i = 0; i < 1000; i += 1 {
                 queue.push(arc4random())
             }
 
             self.startMeasuring()
-            for p in queue {}
+            for _ in queue {}
             self.stopMeasuring()
         }
     }
